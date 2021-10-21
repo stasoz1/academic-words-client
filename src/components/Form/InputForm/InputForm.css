@@ -1,0 +1,49 @@
+#inputSection {
+    height: 13.3vh;
+    border-radius: 8px;
+    background-color: white;
+    padding: 1.66vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#inputSection #inputForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 5.49vh;
+}
+
+form .inputWord {
+    width: 37.5vw;
+    border-radius: 4px;
+}
+
+#switchImg {
+    width: 1.3vw;
+    height: 1.3vw;
+    border-radius:25px ;
+    box-sizing: content-box;
+    padding: 0.3vw;
+}
+
+#switchImg:hover {
+    background-color: #E5E5E5;
+    cursor: pointer;
+}
+
+#searchButton {
+    background-color: #26611E !important;
+    height: 6vh;
+    width: 7.9vw;
+}
+
+.dropdown {
+    width:12.5vw;
+}
+
+.search {
+    color:white;
+}
