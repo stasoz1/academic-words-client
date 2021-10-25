@@ -73,3 +73,25 @@
     letter-spacing: 0.15px;
     color: #000000;
 }
+
+.synonymListItem {
+    background-color:  #7C7C7C;
+    border-radius: 14px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.9vw;
+    line-height: 20px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.25px;
+    color: #FFFFFF;
+    display: inline;
+    padding:6px 10px ;
+    margin-right: 0.26vw;
+}
+
+.wide {
+    width: 80vw !important; 
+}

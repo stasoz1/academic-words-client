@@ -1,0 +1,1 @@
+export const GET_TRANLATION = 'GET_TRANSLATION';

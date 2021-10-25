@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import './InputForm.css'
 import { TextField,
          InputAdornment,
@@ -7,13 +8,17 @@ import { TextField,
          FormControl,
          Select } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
-import switchBtn from '../../../images/switch.png'
-import SearchIcon from '@material-ui/icons/Search'
+import switchBtn from '../../../images/switch.png';
+import SearchIcon from '@material-ui/icons/Search';
+import { getTranslation } from '../../../redux/translation/translationActions'
 
 const InputForm = () => {
     const [formValue, setFormValue] = useState('');
     const [firstDropdownLanguage, setFirstDropdownLanguage] = useState('ua');
     const [secondDropdownLanguage, setSecondDropdownLanguage] = useState('en');
+    const [error, setError] = useState({ isError: false, errorMessage: '' });
+    const dispatch = useDispatch();
+    const translationObj = useSelector(s => s.translation);
     const languageItems = [
     {
         id: 1,
@@ -27,7 +32,12 @@ const InputForm = () => {
     }];
 
     const clearFormValue = () => setFormValue('');
-    const onFormValueChange = (e) => setFormValue(e.target.value);
+    const onFormValueChange = (e) => {
+        setFormValue(e.target.value);
+        if (formValue) {
+            setError({ isError: false, errorMessage: '' });
+        }
+    }
     const onFirstDropdownValueChanged = (e) => {
         if (e.target.value == secondDropdownLanguage) {
             setSecondDropdownLanguage(firstDropdownLanguage)
@@ -53,12 +63,29 @@ const InputForm = () => {
         setSecondDropdownLanguage(firstDropdownLanguage);
     }
 
+    const onSearchClick = () => {
+        if (!formValue) {
+            setError({ isError: true, errorMessage: 'Введіть слово або речення' });
+            return;
+        }
+
+        const translateData = {
+            from: firstDropdownLanguage,
+            to: secondDropdownLanguage,
+            text: formValue
+        };
+
+        dispatch(getTranslation(translateData));
+    }
+
     return (
         <section id="inputSection">
             <form>
                 <div id="inputForm"> 
                     <TextField className="inputWord"
                         id="outlined-basic"
+                        error={error.isError}
+                        label={error.errorMessage}
                         placeholder="Введіть текст"
                         variant="outlined"
                         value={formValue}
@@ -69,7 +96,7 @@ const InputForm = () => {
                                 <CloseIcon onClick={clearFormValue}/>
                             </InputAdornment>
                     }} />
-                    <FormControl variant="outlined">
+                    <FormControl variant="outlined" className="fForm">
                         <Select
                             value={firstDropdownLanguage}
                             labelId="demo-simple-select-outlined-label"
@@ -97,7 +124,9 @@ const InputForm = () => {
                             {selectItems()}
                     </Select>
                 </FormControl> 
-                <Button variant="contained" disableElevation id="searchButton">
+                <Button variant="contained" 
+                        disableElevation id="searchButton"
+                        onClick={onSearchClick}>
                     <SearchIcon className="search"/>
                 </Button>
                 </div>
