@@ -3,7 +3,6 @@ import { getWords } from '../../service'
 
 export const getTranslation = (tranlsationData) => {
     return async dispatch => {
-        console.log('TRANS', tranlsationData);
         let translation = await getWords(tranlsationData);
         // if (!(tranlsationData.text.trim().split(" ").length > 1)) {
         //     translation = {

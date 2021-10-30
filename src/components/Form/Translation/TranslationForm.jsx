@@ -52,7 +52,7 @@ const TranslationForm = () => {
                         </div>
                         <div id="exampleList">
                             {examples && examples.fromLanguageExamples.map((e, i) => 
-                                    <TranslationExample lText={e} rText={examples.toLanguageExamples[i]}/>)
+                                <TranslationExample lText={e} rText={examples.toLanguageExamples[i]}/>)
                             }
                         </div>
                     </section>
