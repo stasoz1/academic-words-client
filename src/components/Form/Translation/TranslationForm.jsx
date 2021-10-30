@@ -45,7 +45,7 @@ const TranslationForm = () => {
                     </div>  
                 }
             </section>
-                {examples && 
+                {examples && examples.fromLanguageExamples.length > 0 && 
                     <section id="examples">
                         <div id="translLabel" className="secLabel">
                             Переклад в контексті

@@ -14,21 +14,21 @@ import { getTranslation } from '../../../redux/translation/translationActions'
 
 const InputForm = () => {
     const [formValue, setFormValue] = useState('');
-    const [firstDropdownLanguage, setFirstDropdownLanguage] = useState('ua');
-    const [secondDropdownLanguage, setSecondDropdownLanguage] = useState('en');
+    const [firstDropdownLanguage, setFirstDropdownLanguage] = useState('en');
+    const [secondDropdownLanguage, setSecondDropdownLanguage] = useState('ua');
     const [error, setError] = useState({ isError: false, errorMessage: '' });
     const dispatch = useDispatch();
     const translationObj = useSelector(s => s.translation);
     const languageItems = [
     {
         id: 1,
-        languageName: 'Українська',
-        languageValue: 'ua'
+        languageName: 'English',
+        languageValue: 'en'
     },
     {
         id: 2,
-        languageName: 'English',
-        languageValue: 'en'
+        languageName: 'Українська',
+        languageValue: 'ua'
     }];
 
     const clearFormValue = () => setFormValue('');
